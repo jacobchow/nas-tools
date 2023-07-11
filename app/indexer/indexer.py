@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import log
 from app.helper import ProgressHelper, SubmoduleHelper, DbHelper
 from app.utils import ExceptionUtils, StringUtils
+from app.indexer.client import BuiltinIndexer
 from app.utils.commons import singleton
 from app.utils.types import SearchType, IndexerType, ProgressKey
 from config import Config
@@ -49,6 +50,13 @@ class Indexer(object):
         if not self._client:
             return []
         return self._client.get_indexers(check=check)
+
+    @staticmethod
+    def get_builtin_indexers(check=True, public=True):
+        """
+        获取内置索引器的索引站点
+        """
+        return BuiltinIndexer().get_indexers(check=check, public=public)
 
     def get_indexer(self, url):
         """

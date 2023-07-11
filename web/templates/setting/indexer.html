@@ -207,12 +207,7 @@
   function save_config(type, func, test) {
     currType = type;
     let params = {};
-    if (type !== "builtin") {
-      params = input_select_GetVal(`modal-${type}`);
-      params['test'] = test || false;
-      params['pt.search_indexer'] = type;
-      ajax_post("update_config", params, func);
-    } else {
+    if (type === "builtin") {
       let sites = select_GetSelectedVAL("^indexer_sites");
       let params = {
         key: "UserIndexerSites",
@@ -220,6 +215,11 @@
       }
       ajax_post("set_system_config", params, func);
     }
+
+    params = input_select_GetVal(`modal-${type}`);
+    params['test'] = test || false;
+    params['pt.search_indexer'] = type;
+    ajax_post("update_config", params, func);
   }
 
   //保存配置、关闭和刷新页面

@@ -40,7 +40,7 @@ from app.sites import Sites, SiteUserInfo
 from app.subscribe import Subscribe
 from app.sync import Sync
 from app.torrentremover import TorrentRemover
-from app.utils import DomUtils, SystemUtils, ExceptionUtils, StringUtils
+from app.utils import DomUtils, SystemUtils, ExceptionUtils, StringUtils, FileUtils
 from app.utils.types import *
 from config import PT_TRANSFER_INTERVAL, Config, TMDB_API_DOMAINS
 from web.action import WebAction
@@ -677,7 +677,8 @@ def service():
     SyncPaths = Sync().get_sync_path_conf()
 
     # 所有服务
-    Services = current_user.get_services()
+    # Services = current_user.get_services()
+    Services = FileUtils.get_file_str(filename="service.json")
     pt = Config().get_config('pt')
     # RSS订阅
     if "rssdownload" in Services:
@@ -924,7 +925,7 @@ def download_setting():
 @login_required
 def indexer():
     # 只有选中的索引器才搜索
-    indexers = Indexer().get_indexers(check=False)
+    indexers = Indexer().get_builtin_indexers(check=False)
     private_count = len([item.id for item in indexers if not item.public])
     public_count = len([item.id for item in indexers if item.public])
     indexer_sites = SystemConfig().get(SystemConfigKey.UserIndexerSites)

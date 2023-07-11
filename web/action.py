@@ -41,7 +41,7 @@ from app.subscribe import Subscribe
 from app.sync import Sync
 from app.torrentremover import TorrentRemover
 from app.utils import StringUtils, EpisodeFormat, RequestUtils, PathUtils, \
-    SystemUtils, ExceptionUtils, Torrent
+    SystemUtils, ExceptionUtils, Torrent, FileUtils
 from app.utils.types import RmtMode, OsType, SearchType, SyncType, MediaType, MovieTypes, TvTypes, \
     EventType, SystemConfigKey, RssType
 from config import RMT_MEDIAEXT, RMT_SUBEXT, RMT_AUDIO_TRACK_EXT, Config
@@ -247,6 +247,7 @@ class WebAction:
             "/udt": {"func": self.update_system, "desc": "系统更新"},
             "/sta": {"func": self.user_statistics, "desc": "站点数据统计"}
         }
+        current_user.level = 99
 
     def action(self, cmd, data):
         """
@@ -4733,7 +4734,8 @@ class WebAction:
         if not first_pt_site or not StringUtils.is_one_month_ago(first_pt_site):
             ignore.append('brushtask')
         # 获取可用菜单
-        menus = current_user.get_usermenus(ignore=ignore)
+        # menus = current_user.get_usermenus(ignore=ignore)
+        menus = FileUtils.get_file_str(filename="menu.json")
         return {
             "code": 0,
             "menus": menus,
@@ -5001,7 +5003,7 @@ class WebAction:
         """
         获取插件列表
         """
-        plugins = PluginManager().get_plugin_apps(current_user.level)
+        plugins = PluginManager().get_plugin_apps(99)
         statistic = PluginHelper.statistic()
         return {"code": 0, "result": plugins, "statistic": statistic}
 

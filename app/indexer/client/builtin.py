@@ -116,7 +116,7 @@ class BuiltinIndexer(_IIndexClient):
                     indexer.name = site.get("name")
                     ret_indexers.append(indexer)
         # 公开站点
-        if public and self._show_more_sites:
+        if public and self.user.get_public_sites():
             for site_url in self.user.get_public_sites():
                 indexer = self.user.get_indexer(url=site_url)
                 if check and (not indexer_sites or indexer.id not in indexer_sites):
@@ -124,6 +124,7 @@ class BuiltinIndexer(_IIndexClient):
                 if indexer.domain not in _indexer_domains:
                     _indexer_domains.append(indexer.domain)
                     ret_indexers.append(indexer)
+
         return ret_indexers
 
     def search(self, order_seq,
