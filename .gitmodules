@@ -1,12 +1,12 @@
 [submodule "third_party/qbittorrent-api"]
 	path = third_party/qbittorrent-api
-	url = https://github.com/rmartin16/qbittorrent-api
+	url = https://github.com/rmartin16/qbittorrent-api.git
 [submodule "third_party/transmission-rpc"]
 	path = third_party/transmission-rpc
-	url = https://github.com/Trim21/transmission-rpc
+	url = https://github.com/trim21/transmission-rpc.git
 [submodule "third_party/anitopy"]
 	path = third_party/anitopy
-	url = https://github.com/igorcmoura/anitopy
+	url = https://github.com/igorcmoura/anitopy.git
 [submodule "third_party/plexapi"]
 	path = third_party/plexapi
 	url = https://github.com/pkkid/python-plexapi
@@ -15,4 +15,10 @@
 	url = https://github.com/slackapi/bolt-python
 [submodule "third_party/feapder"]
 	path = third_party/feapder
-	url = https://github.com/jxxghp/feapder
+	url = https://github.com/jxxghp/feapder.git
+[submodule "third_party/python-plexapi"]
+	path = third_party/python-plexapi
+	url = https://github.com/pkkid/python-plexapi.git
+[submodule "third_party/bolt-python"]
+	path = third_party/bolt-python
+	url = https://github.com/slackapi/bolt-python.git
