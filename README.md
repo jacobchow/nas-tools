@@ -1,9 +1,4 @@
 ![logo-blue](https://user-images.githubusercontent.com/51039935/197520391-f35db354-6071-4c12-86ea-fc450f04bc85.png)
-
-<h4 align="center">访客数 :eyes:</h4>
-
-<p align="center"><img src="https://profile-counter.glitch.me/ysx88/count.svg" alt="ysx88 :: Visitor's Count" /></p>
-
 # NAS媒体库资源归集、整理自动化工具
 
 [![GitHub stars](https://img.shields.io/github/stars/jxxghp/nas-tools?style=plastic)](https://github.com/jxxghp/nas-tools/stargazers)
@@ -60,10 +55,10 @@ docker pull jxxghp/nas-tools:latest
 ### 2、本地运行
 python3.10版本，需要预安装cython，如发现缺少依赖包需额外安装
 ```
-git clone -b master https://github.com/Mattoids/nas-tools.git --recurse-submodule 
-python3.10 -m pip install -r requirements.txt
+git clone -b master https://github.com/jxxghp/nas-tools --recurse-submodule 
+python3 -m pip install -r requirements.txt
 export NASTOOL_CONFIG="/xxx/config/config.yaml"
-nohup python3.10 run.py & 
+nohup python3 run.py & 
 ```
 
 ### 3、Windows
